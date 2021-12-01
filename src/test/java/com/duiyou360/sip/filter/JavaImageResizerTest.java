@@ -15,7 +15,7 @@ class JavaImageResizerTest extends BaseTest {
 
     private JavaImageResizer imageResizer = new JavaImageResizer();
 
-    private BufferedImage sourceImage = ImageIO.read(Class.class.getResourceAsStream("/source-image.png"));
+    private BufferedImage sourceImage = ImageIO.read(BaseTest.class.getResourceAsStream("/source-image.png"));
 
     private int sourceWidth = sourceImage.getWidth();
     private int sourceHeight = sourceImage.getHeight();
@@ -38,12 +38,8 @@ class JavaImageResizerTest extends BaseTest {
         int targetWidth = (int) ((double)sourceWidth * 0.5);
         int targetHeight = (int) ((double) sourceHeight * 0.5);
 
-        int resizeTimes = 1;
-
-        assertTimeout(Duration.ofMillis(100), ()->{
-            for (int i = 0; i< resizeTimes; i ++){
+        assertTimeout(Duration.ofMillis(500), ()->{
                 imageResizer.resize(sourceImage, targetWidth, targetHeight);
-            }
         });
     }
 

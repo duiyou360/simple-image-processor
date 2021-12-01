@@ -19,7 +19,7 @@ class JavaImageBlurrerTest extends BaseTest {
 
     private JavaImageFilter blurrer = new JavaImageFilter();
 
-    private BufferedImage sourceImage = ImageIO.read(Class.class.getResourceAsStream("/image-with-text.png"));
+    private BufferedImage sourceImage = ImageIO.read(BaseTest.class.getResourceAsStream("/image-with-text.png"));
 
     JavaImageBlurrerTest() throws IOException {
     }
