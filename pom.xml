@@ -3,14 +3,40 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.duiyou360</groupId>
     <artifactId>simple-image-processor</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2-SNAPSHOT</version>
+
+    <name>Simple Image Processor</name>
+    <description>Common and easy-to-use image processing tools like resizing and filtering</description>
+    <url>https://github.com/duiyou360/simple-image-processor</url>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>https://www.opensource.org/licenses/mit-license.php</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>zhiliang</name>
+            <email>zhiliang@pmcaff.com</email>
+            <organization>PMCAFF</organization>
+            <organizationUrl>https://www.duiyou360.com</organizationUrl>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/duiyou360/simple-image-processor.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/duiyou360/simple-image-processor.git</developerConnection>
+        <url>https://github.com/duiyou360/simple-image-processor/</url>
+    </scm>
 
     <dependencies>
 
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
-            <version>5.8.1</version>
+            <version>5.8.2</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -34,8 +60,83 @@
                 <version>2.22.0</version>
             </plugin>
 
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.0.4</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.3</version>
+                <configuration>
+                    <locale>en_US</locale>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.5</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.6.8</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>ossrh</serverId>
+                    <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.thoughtworks.xstream</groupId>
+                        <artifactId>xstream</artifactId>
+                        <version>1.4.15</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+
         </plugins>
+
+
+
     </build>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
 
 
 
