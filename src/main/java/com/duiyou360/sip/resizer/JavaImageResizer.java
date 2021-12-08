@@ -9,7 +9,7 @@ public class JavaImageResizer implements ImageResizer {
 
     @Override
     public BufferedImage resize(BufferedImage sourceImage, int targetWidth, int targetHeight) {
-        BufferedImage resizedImage = new BufferedImage(targetWidth, targetHeight, BufferedImage.TYPE_INT_ARGB);
+        BufferedImage resizedImage = new BufferedImage(targetWidth, targetHeight, sourceImage.getType());
         Graphics2D graphics2D = resizedImage.createGraphics();
         graphics2D.drawImage(sourceImage, 0, 0, targetWidth, targetHeight, null);
         graphics2D.dispose();

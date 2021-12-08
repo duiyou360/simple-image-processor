@@ -80,5 +80,20 @@ class ImageResizerTest extends BaseTest {
         fitSize = resizer.calculateFitSize(sourceImage, maxWidth, maxHeight);
         assertEquals(50, fitSize.getWidth());
         assertEquals(40, fitSize.getHeight());
+
+        //宽度符合，高度不限
+        maxWidth = 200;
+        maxHeight = 0;
+        fitSize = resizer.calculateFitSize(sourceImage, maxWidth, maxHeight);
+        assertEquals(100, fitSize.getWidth());
+        assertEquals(80, fitSize.getHeight());
+
+        //高度符合，宽度不限
+        maxWidth = 0;
+        maxHeight = 100;
+        fitSize = resizer.calculateFitSize(sourceImage, maxWidth, maxHeight);
+        assertEquals(100, fitSize.getWidth());
+        assertEquals(80, fitSize.getHeight());
+
     }
 }

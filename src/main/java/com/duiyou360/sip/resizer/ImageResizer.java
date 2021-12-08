@@ -1,6 +1,5 @@
 package com.duiyou360.sip.resizer;
 
-import javax.imageio.ImageIO;
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 
@@ -16,9 +15,8 @@ public interface ImageResizer {
     default Dimension calculateFitSize(BufferedImage sourceImage, int maxWidth, int maxHeight){
         int imageWidth = sourceImage.getWidth();
         int imageHeight = sourceImage.getHeight();
-        if( imageWidth <= maxWidth && imageHeight <= maxHeight
-            || maxWidth <= 0 && maxHeight <= 0
-
+        if( (imageWidth <= maxWidth || maxWidth <= 0)
+                && (imageHeight <= maxHeight || maxHeight <= 0 )
         ){
             return new Dimension(imageWidth, imageHeight);
         }
@@ -30,7 +28,7 @@ public interface ImageResizer {
         if(maxHeight > 0 && maxWidth > 0){
             double maxRatio = maxWidth/(double)maxHeight;
             fitWidth = imageRatio >= maxRatio;
-        }else {
+        }else{
             fitWidth = maxHeight <= 0;
         }
 
