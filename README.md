@@ -38,7 +38,7 @@ BufferedImage resultImage = filter.blur(sourceImage, customKernel);
 ### Filters
 - JavaImageFilter: pure java filter without third party dependencies
 
-### operations
+### Operations
 - blur: blur image using Kernel
 
 ### Kernels
