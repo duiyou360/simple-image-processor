@@ -32,6 +32,8 @@ ImageFilter filter = new JavaImageFilter(); //choose a filter that implements Im
 //blur image, choose a Kernal
 Kernel customKernel = new GeneralKernelMaker().make(); //using custom kernel
 BufferedImage resultImage = filter.blur(sourceImage, customKernel);
+```
+
 
 ### Filters
 - JavaImageFilter: pure java filter without third party dependencies
@@ -42,6 +44,4 @@ BufferedImage resultImage = filter.blur(sourceImage, customKernel);
 ### Kernels
 - GeneralKernelMaker: kernel maker supporting custom matrix (a default 3*3 will be used if not provided)
 - EmbossKernelMaker: used for embossing an image
-
-```
 
